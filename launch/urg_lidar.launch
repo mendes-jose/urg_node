@@ -16,4 +16,14 @@
     <param name="angle_max" value="2.35619449"/>
   </node>
 
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="scan_filter">
+    <rosparam param="scan_filter_chain" subst_value="true"  >
+      - name: shadows
+        params: {max_angle: 175, min_angle: 5, neighbors: 3, window: 2}
+        type: laser_filters/ScanShadowsFilter
+    </rosparam>
+    <!-- <remap from="scan" to="scan_unfiltered" /> -->
+    <!-- <remap from="scan_filtered" to="scan" /> -->
+  </node>
+
 </launch>
